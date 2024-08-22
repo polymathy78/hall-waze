@@ -1,38 +1,257 @@
+/* Navigation Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #152024;
+  /* Dark background for the nav */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow for depth */
+}
+
+.logo {
+  width: 100px;
+  border-radius: 50%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  /* Slight zoom on hover */
+}
+
+.nav-links {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #e3eae9;
+  /* Light color for contrast against the dark background */
+  font-weight: 600;
+  font-size: 16px;
+  padding: 10px 15px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.nav-links a:hover {
+  color: #152024;
+  background-color: #76c0cf;
+  /* Primary accent color for hover effect */
+}
+
+/* Sign Out Button Styling */
+.signout-button {
+  background-color: #74765a;
+  /* Different color to distinguish it from links */
+  color: #e3eae9;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.signout-button:hover {
+  background-color: #5b5c47;
+  /* Darker shade on hover */
+  transform: translateY(-2px);
+}
+
+/* General Container Styling */
 .App {
   text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #e3eae9;
+  /* Light background for the whole app */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow around the app container */
+  border-radius: 10px;
+  /* Rounded corners for the app container */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Form Container Styling */
+.student-form {
+  margin: 0 auto 30px;
+  padding: 30px;
+  max-width: 600px;
+  background-color: #ffffff;
+  /* White background for a clean look */
+  border: 1px solid #74765a;
+  /* Border with a color from the palette */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  /* Stronger shadow for the form */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Flexbox Layout for Form Fields */
+.form-row {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 20px;
+}
+
+.form-group {
+  flex: 1;
+}
+
+.form-group h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #152024;
+  /* Dark text color for headings */
+}
+
+/* Form Field Styling */
+.student-form select,
+.student-form input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  /* Slightly off-white background */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.student-form select:focus,
+.student-form input:focus {
+  border-color: #76c0cf;
+  /* Primary color for focus state */
+  outline: none;
+  box-shadow: 0 0 8px rgba(118, 192, 207, 0.5);
+  /* Focus effect using primary color */
+}
+
+/* Button Styling */
+.student-form button {
+  width: 100%;
+  padding: 12px 0;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #76c0cf;
+  /* Primary button color */
   color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.student-form button:hover {
+  background-color: #5ba5b8;
+  /* Slightly darker shade for hover */
+  transform: translateY(-2px);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Hidden Input */
+.hidden-input {
+  display: none;
+}
+
+/* Student Records Section Styling */
+.student-records {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* General Card Styling */
+.student-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  width: 220px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.student-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Destination-specific Styling */
+.library-card {
+  background-color: #e3f2fd;
+  /* Light blue for Library */
+}
+
+.gym-card {
+  background-color: #ffebee;
+  /* Light red for Gym */
+}
+
+.cafeteria-card {
+  background-color: #fff8e1;
+  /* Light yellow for Cafeteria */
+}
+
+.auditorium-card {
+  background-color: #f3e5f5;
+  /* Light purple for Auditorium */
+}
+
+.playground-card {
+  background-color: #e8f5e9;
+  /* Light green for Playground */
+}
+
+.laboratory-card {
+  background-color: #fbe9e7;
+  /* Light orange for Laboratory */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  to {
-    transform: rotate(360deg);
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    margin-top: 10px;
+  }
+
+  .nav-links li {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  .student-form {
+    padding: 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .student-form h3 {
+    font-size: 16px;
+  }
+
+  .student-form button {
+    font-size: 14px;
   }
 }
