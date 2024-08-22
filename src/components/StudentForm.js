@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
-import { format } from 'date-fns';
 
 const StudentForm = ({ students, onSubmit }) => {
   const [studentID, setStudentID] = useState('');
   const [selectedStudentName, setSelectedStudentName] = useState('');
   const [destination, setDestination] = useState('');
-
-  const formatDate = (date) => {
-    return format(date, "EEEE, MMMM d';' hh:mmaaa");
-  };
 
   // Array of destinations
   const destinations = [
@@ -33,15 +28,11 @@ const StudentForm = ({ students, onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const date = new Date();
-    const formattedDate = formatDate(date);
-
     const studentRecord = {
       StudentID: studentID,
       Name: selectedStudentName,
       Destination: destination,
-      DepartureTime: formattedDate,
-      ConvertedDepartureTime: new Date().toLocaleString('en-US'),
+      DepartureTime: new Date().toISOString(),
       SchoolID: 'SchoolIDPlaceholder', // Replace with actual SchoolID
       TeacherID: 'TeacherIDPlaceholder', // Replace with actual TeacherID
     };
