@@ -8,6 +8,7 @@ import {
   Image,
   Authenticator,
 } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
 import { generateClient } from 'aws-amplify/api';
 import {
   BrowserRouter as Router,
