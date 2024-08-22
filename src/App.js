@@ -109,6 +109,7 @@ export default function App() {
       const updatedRecord = {
         id,
         ReturnTime: new Date().toISOString(),
+        ConvertedReturnTime: new Date().toLocaleString('en-US'),
       };
       await API.graphql({
         query: updateStudentRecord,
