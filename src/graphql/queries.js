@@ -131,9 +131,7 @@ export const getStudentRecord = /* GraphQL */ `
       Name
       Destination
       DepartureTime
-      ConvertedDepartureTime
       ReturnTime
-      ConvertedReturnTime
       SchoolID
       SchoolName
       TeacherID
@@ -157,9 +155,7 @@ export const listStudentRecords = /* GraphQL */ `
         Name
         Destination
         DepartureTime
-        ConvertedDepartureTime
         ReturnTime
-        ConvertedReturnTime
         SchoolID
         SchoolName
         TeacherID
