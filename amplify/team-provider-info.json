@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-hallwaze-dev-ab20b-authRole",
+      "UnauthRoleArn": "arn:aws:iam::881490095503:role/amplify-hallwaze-dev-ab20b-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::881490095503:role/amplify-hallwaze-dev-ab20b-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-hallwaze-dev-ab20b-deployment",
+      "UnauthRoleName": "amplify-hallwaze-dev-ab20b-unauthRole",
+      "StackName": "amplify-hallwaze-dev-ab20b",
+      "StackId": "arn:aws:cloudformation:us-east-1:881490095503:stack/amplify-hallwaze-dev-ab20b/2b025c90-602b-11ef-89ae-0afffd4a9aad",
+      "AmplifyAppId": "dqezcdf7qgt7f"
+    },
+    "categories": {
+      "auth": {
+        "hallwaze405fe21b": {}
+      }
+    }
+  }
+}
