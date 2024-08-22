@@ -32,8 +32,7 @@ const StudentForm = ({ students, onSubmit }) => {
       StudentID: studentID,
       Name: selectedStudentName,
       Destination: destination,
-      DepartureTime: new Date().toISOString(),
-      ConvertedDepartureTime: new Date().toLocaleString('en-US'),
+      DepartureTime: new Date().oLocaleString('en-US'),
       SchoolID: 'SchoolIDPlaceholder', // Replace with actual SchoolID
       TeacherID: 'TeacherIDPlaceholder', // Replace with actual TeacherID
     };
