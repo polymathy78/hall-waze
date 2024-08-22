@@ -1,7 +1,13 @@
 import { Amplify } from 'aws-amplify';
 import { signOut } from 'aws-amplify/auth';
 import React, { useState, useEffect } from 'react';
-import { Authenticator } from '@aws-amplify/ui-react';
+import {
+  useTheme,
+  View,
+  Text,
+  Image,
+  Authenticator,
+} from '@aws-amplify/ui-react';
 import { generateClient } from 'aws-amplify/api';
 import {
   BrowserRouter as Router,
@@ -129,8 +135,33 @@ export default function App() {
       console.error('Error signing out: ', error);
     }
   };
+
+  const components = {
+    Header() {
+      const { tokens } = useTheme();
+
+      return (
+        <View textAlign="center" padding={tokens.space.large}>
+          <Image alt="logo" src="/hall-waze.png" />
+        </View>
+      );
+    },
+
+    Footer() {
+      const { tokens } = useTheme();
+
+      return (
+        <View textAlign="center" padding={tokens.space.large}>
+          <Text color={tokens.colors.neutral[80]}>
+            &copy; All Rights Reserved
+          </Text>
+        </View>
+      );
+    },
+  };
+
   return (
-    <Authenticator hideSignUp>
+    <Authenticator components={components} hideSignUp>
       {({ signOut, user }) => (
         <Router>
           <div className="App">
