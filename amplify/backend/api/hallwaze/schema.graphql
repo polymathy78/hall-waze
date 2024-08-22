@@ -38,7 +38,9 @@ type StudentRecord @model {
   Name: String!
   Destination: String!
   DepartureTime: AWSDateTime!
+  ConvertedDepartureTime: String
   ReturnTime: AWSDateTime
+  ConvertedReturnTime: String
   SchoolID: String!
   SchoolName: String
   TeacherID: String!

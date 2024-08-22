@@ -183,7 +183,9 @@ export const createStudentRecord = /* GraphQL */ `
       Name
       Destination
       DepartureTime
+      ConvertedDepartureTime
       ReturnTime
+      ConvertedReturnTime
       SchoolID
       SchoolName
       TeacherID
@@ -205,7 +207,9 @@ export const updateStudentRecord = /* GraphQL */ `
       Name
       Destination
       DepartureTime
+      ConvertedDepartureTime
       ReturnTime
+      ConvertedReturnTime
       SchoolID
       SchoolName
       TeacherID
@@ -227,7 +231,9 @@ export const deleteStudentRecord = /* GraphQL */ `
       Name
       Destination
       DepartureTime
+      ConvertedDepartureTime
       ReturnTime
+      ConvertedReturnTime
       SchoolID
       SchoolName
       TeacherID
