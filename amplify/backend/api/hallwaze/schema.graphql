@@ -25,6 +25,13 @@ type School @model {
   updatedAt: AWSDateTime
 }
 
+type Destination @model {
+  id: ID!
+  name: String!
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+}
+
 type StudentRecord @model {
   id: ID!
   StudentID: String!

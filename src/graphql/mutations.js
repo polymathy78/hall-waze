@@ -130,6 +130,48 @@ export const deleteSchool = /* GraphQL */ `
     }
   }
 `;
+export const createDestination = /* GraphQL */ `
+  mutation CreateDestination(
+    $input: CreateDestinationInput!
+    $condition: ModelDestinationConditionInput
+  ) {
+    createDestination(input: $input, condition: $condition) {
+      id
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const updateDestination = /* GraphQL */ `
+  mutation UpdateDestination(
+    $input: UpdateDestinationInput!
+    $condition: ModelDestinationConditionInput
+  ) {
+    updateDestination(input: $input, condition: $condition) {
+      id
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteDestination = /* GraphQL */ `
+  mutation DeleteDestination(
+    $input: DeleteDestinationInput!
+    $condition: ModelDestinationConditionInput
+  ) {
+    deleteDestination(input: $input, condition: $condition) {
+      id
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
 export const createStudentRecord = /* GraphQL */ `
   mutation CreateStudentRecord(
     $input: CreateStudentRecordInput!

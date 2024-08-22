@@ -93,6 +93,36 @@ export const listSchools = /* GraphQL */ `
     }
   }
 `;
+export const getDestination = /* GraphQL */ `
+  query GetDestination($id: ID!) {
+    getDestination(id: $id) {
+      id
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listDestinations = /* GraphQL */ `
+  query ListDestinations(
+    $filter: ModelDestinationFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listDestinations(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
 export const getStudentRecord = /* GraphQL */ `
   query GetStudentRecord($id: ID!) {
     getStudentRecord(id: $id) {

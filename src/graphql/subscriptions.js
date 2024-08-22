@@ -103,6 +103,45 @@ export const onDeleteSchool = /* GraphQL */ `
     }
   }
 `;
+export const onCreateDestination = /* GraphQL */ `
+  subscription OnCreateDestination(
+    $filter: ModelSubscriptionDestinationFilterInput
+  ) {
+    onCreateDestination(filter: $filter) {
+      id
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateDestination = /* GraphQL */ `
+  subscription OnUpdateDestination(
+    $filter: ModelSubscriptionDestinationFilterInput
+  ) {
+    onUpdateDestination(filter: $filter) {
+      id
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteDestination = /* GraphQL */ `
+  subscription OnDeleteDestination(
+    $filter: ModelSubscriptionDestinationFilterInput
+  ) {
+    onDeleteDestination(filter: $filter) {
+      id
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
 export const onCreateStudentRecord = /* GraphQL */ `
   subscription OnCreateStudentRecord(
     $filter: ModelSubscriptionStudentRecordFilterInput
