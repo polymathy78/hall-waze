@@ -143,7 +143,11 @@ export default function App() {
 
       return (
         <View textAlign="center" padding={tokens.space.large}>
-          <Image alt="logo" src="/hall-waze.png" />
+          <Image
+            alt="logo"
+            src="/hall-waze.png"
+            className="home-logo"
+          />
         </View>
       );
     },

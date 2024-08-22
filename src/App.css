@@ -10,6 +10,10 @@
   /* Subtle shadow for depth */
 }
 
+.home-logo {
+  border-radius: 50%;
+}
+
 .logo {
   width: 100px;
   border-radius: 50%;
