@@ -78,7 +78,6 @@
   text-align: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
   background-color: #e3eae9;
   /* Light background for the whole app */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -89,7 +88,7 @@
 
 /* Form Container Styling */
 .student-form {
-  margin: 0 auto 30px;
+  margin: 30px auto 30px;
   padding: 30px;
   max-width: 600px;
   background-color: #ffffff;
