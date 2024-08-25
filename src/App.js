@@ -20,6 +20,7 @@ import {
 import awsExports from './aws-exports';
 import StudentForm from './components/StudentForm';
 import StudentCard from './components/StudentCard';
+import Popup from './components/Popup';
 import DataGraph from './components/DataGraph'; // New component for graphs
 import { listStudentRecords, listStudents } from './graphql/queries';
 import {
@@ -35,6 +36,7 @@ const API = generateClient();
 export default function App() {
   const [records, setRecords] = useState([]);
   const [students, setStudents] = useState([]);
+  const [popupMessage, setPopupMessage] = useState('');
 
   // Fetch student records
   const fetchRecords = async () => {
@@ -67,6 +69,13 @@ export default function App() {
     fetchStudents(); // Fetch student names and IDs when the component mounts
   }, []);
 
+  const showPopup = (message) => {
+    setPopupMessage(message);
+    setTimeout(() => {
+      setPopupMessage('');
+    }, 3000); // Popup disappears after 3 seconds
+  };
+
   const handleSubmit = async (studentRecord) => {
     const dingSound = new Audio('/sounds/ding.mp3'); // Path to the sound file
 
@@ -93,7 +102,7 @@ export default function App() {
 
         if (timeDifference < oneHourInMilliseconds) {
           dingSound.play(); // Play the ding sound
-          alert(
+          showPopup(
             'You cannot make a new submission within an hour of your last submission.'
           );
           return;
@@ -104,7 +113,7 @@ export default function App() {
         query: createStudentRecord,
         variables: { input: studentRecord },
       });
-      alert('Student record created successfully');
+      showPopup('Student record created successfully');
       fetchRecords();
     } catch (error) {
       console.error('Error creating student record:', error);
@@ -121,7 +130,7 @@ export default function App() {
         query: updateStudentRecord,
         variables: { input: updatedRecord },
       });
-      alert('Student has returned.');
+      showPopup('Student has returned.');
       fetchRecords();
     } catch (error) {
       console.error('Error updating student record:', error);
@@ -219,6 +228,7 @@ export default function App() {
               />
             </Routes>
           </div>
+          <Popup message={popupMessage} />
         </Router>
       )}
     </Authenticator>
