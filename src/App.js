@@ -1,5 +1,6 @@
 import { Amplify } from 'aws-amplify';
 import { signOut } from 'aws-amplify/auth';
+import { fetchAuthSession } from 'aws-amplify/auth';
 import React, { useState, useEffect } from 'react';
 import {
   useTheme,
@@ -14,7 +15,7 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Link,
+  Navigate,
 } from 'react-router-dom'; // Use Routes instead of Switch
 
 import awsExports from './aws-exports';
@@ -37,6 +38,32 @@ export default function App() {
   const [records, setRecords] = useState([]);
   const [students, setStudents] = useState([]);
   const [popupMessage, setPopupMessage] = useState('');
+  const [userGroup, setUserGroup] = useState(null);
+
+  // Get the current authenticated user and their group
+  useEffect(() => {
+    const checkUserGroup = async () => {
+      try {
+        const session = await fetchAuthSession();
+
+        const groups =
+          session.tokens.accessToken.payload['cognito:groups'];
+        console.log(groups);
+        if (groups.includes('admins')) {
+          setUserGroup('admin');
+          console.log(userGroup);
+        } else if (groups.includes('teachers')) {
+          setUserGroup('teacher');
+        } else {
+          setUserGroup(null); // Handle unassigned users
+        }
+      } catch (error) {
+        console.error('Error fetching user group:', error);
+        setUserGroup(null);
+      }
+    };
+    checkUserGroup();
+  }, []);
 
   // Fetch student records
   const fetchRecords = async () => {
@@ -182,12 +209,24 @@ export default function App() {
             <nav className="navbar">
               <img src="/hall-waze.png" alt="Logo" className="logo" />
               <ul className="nav-links">
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/graphs">Graphs</Link>
-                </li>
+                {/* Show Home and Graphs for teachers */}
+                {userGroup === 'teacher' && (
+                  <>
+                    <li>
+                      <a href="/">Home</a>
+                    </li>
+                    <li>
+                      <a href="/graphs">Graphs</a>
+                    </li>
+                  </>
+                )}
+
+                {/* Show only Graphs for admins */}
+                {userGroup === 'admin' && (
+                  <li>
+                    <a href="/graphs">Graphs</a>
+                  </li>
+                )}
                 <li>
                   <button
                     className="signout-button"
@@ -199,33 +238,46 @@ export default function App() {
               </ul>
             </nav>
             <Routes>
-              <Route
-                path="/"
-                element={
-                  <>
-                    <StudentForm
-                      onSubmit={handleSubmit}
-                      students={students}
-                    />
-                    <hr />
-                    <div className="student-records">
-                      {records.map((record) =>
-                        !record.ReturnTime ? (
-                          <StudentCard
-                            key={record.id}
-                            record={record}
-                            handleReturn={handleReturn}
-                          />
-                        ) : null
-                      )}
-                    </div>
-                  </>
-                }
-              />
-              <Route
-                path="/graphs"
-                element={<DataGraph records={records} />}
-              />
+              {userGroup === 'teacher' ? (
+                <>
+                  <Route
+                    path="/"
+                    element={
+                      <>
+                        <StudentForm
+                          onSubmit={handleSubmit}
+                          students={students}
+                        />
+                        <hr />
+                        <div className="student-records">
+                          {records.map((record) =>
+                            !record.ReturnTime ? (
+                              <StudentCard
+                                key={record.id}
+                                record={record}
+                                handleReturn={handleReturn}
+                              />
+                            ) : null
+                          )}
+                        </div>
+                      </>
+                    }
+                  />
+                  <Route
+                    path="/graphs"
+                    element={<DataGraph records={records} />}
+                  />
+                </>
+              ) : null}
+
+              {userGroup === 'admin' ? (
+                <>
+                  <Route
+                    path="/"
+                    element={<DataGraph records={records} />}
+                  />
+                </>
+              ) : null}
             </Routes>
           </div>
           <Popup message={popupMessage} />
