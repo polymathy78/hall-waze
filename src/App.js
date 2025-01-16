@@ -248,7 +248,7 @@ export default function App() {
                           onSubmit={handleSubmit}
                           students={students}
                         />
-                        <hr />
+
                         <div className="student-records">
                           {records.map((record) =>
                             !record.ReturnTime ? (

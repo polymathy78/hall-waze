@@ -44,44 +44,56 @@ const StudentForm = ({ students, onSubmit }) => {
     setDestination('');
   };
 
+  const getFormattedDate = () => {
+    const today = new Date();
+    return today.toLocaleDateString('en-US', {
+      weekday: 'long', // Full weekday name
+      month: 'long', // Full month name
+      day: 'numeric', // Numeric day
+    });
+  };
+
   return (
-    <form className="student-form" onSubmit={handleSubmit}>
-      <div className="form-row">
-        <div className="form-group">
-          <select
-            value={selectedStudentName}
-            onChange={handleStudentChange}
-            required
-          >
-            <option value="" disabled>
-              Select Student
-            </option>
-            {students.map((student) => (
-              <option key={student.id} value={student.name}>
-                {student.name}
+    <div>
+      <h2>{getFormattedDate()}</h2>
+      <form className="student-form" onSubmit={handleSubmit}>
+        <div className="form-row">
+          <div className="form-group">
+            <select
+              value={selectedStudentName}
+              onChange={handleStudentChange}
+              required
+            >
+              <option value="" disabled>
+                Select Student
               </option>
-            ))}
-          </select>
-        </div>
-        <div className="form-group">
-          <select
-            value={destination}
-            onChange={(e) => setDestination(e.target.value)}
-            required
-          >
-            <option value="" disabled>
-              Select Destination
-            </option>
-            {destinations.map((dest, index) => (
-              <option key={index} value={dest}>
-                {dest}
+              {students.map((student) => (
+                <option key={student.id} value={student.name}>
+                  {student.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <select
+              value={destination}
+              onChange={(e) => setDestination(e.target.value)}
+              required
+            >
+              <option value="" disabled>
+                Select Destination
               </option>
-            ))}
-          </select>
+              {destinations.map((dest, index) => (
+                <option key={index} value={dest}>
+                  {dest}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 };
 

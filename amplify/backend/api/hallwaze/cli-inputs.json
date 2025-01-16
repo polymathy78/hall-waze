@@ -10,6 +10,11 @@
       "keyDescription": "hall-waze"
     },
     "conflictResolution": {},
-    "additionalAuthTypes": []
+    "additionalAuthTypes": [
+      {
+        "mode": "AMAZON_COGNITO_USER_POOLS",
+        "cognitoUserPoolId": "authhallwaze405fe21b"
+      }
+    ]
   }
 }

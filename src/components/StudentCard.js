@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 
 const StudentCard = ({ record, handleReturn }) => {
   const [elapsedTime, setElapsedTime] = useState('');
+  const [isOverTime, setIsOverTime] = useState(false);
 
   useEffect(() => {
     if (record.DepartureTime) {
       const interval = setInterval(() => {
         const departure = new Date(record.DepartureTime);
-        console.log(departure);
         const now = new Date();
         const diffMs = now - departure;
 
@@ -20,12 +20,15 @@ const StudentCard = ({ record, handleReturn }) => {
             .toString()
             .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
         );
+
+        // Check if the elapsed time exceeds 15 minutes
+        setIsOverTime(diffMs > 15 * 60 * 1000);
       }, 1000);
 
       return () => clearInterval(interval);
     }
-  }, [record.departureTime]);
-  // Determine the class based on the destination
+  }, [record.DepartureTime]);
+
   const getDestinationClass = (destination) => {
     switch (destination) {
       case 'Library':
@@ -49,7 +52,7 @@ const StudentCard = ({ record, handleReturn }) => {
     <div
       className={`student-card ${getDestinationClass(
         record.Destination
-      )}`}
+      )} ${isOverTime ? 'overtime-card' : ''}`}
     >
       <h4>{record.Name}</h4>
       <p>Destination: {record.Destination}</p>
