@@ -5,7 +5,11 @@
     "serviceName": "AppSync",
     "defaultAuthType": {
       "mode": "API_KEY",
-      "expirationTime": 7
-    }
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2026-01-16T20:32:08.196Z",
+      "keyDescription": "hall-waze"
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": []
   }
 }
