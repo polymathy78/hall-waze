@@ -40,6 +40,19 @@ export default function App() {
   const [popupMessage, setPopupMessage] = useState('');
   const [userGroup, setUserGroup] = useState(null);
 
+  const studentList = [
+    { id: 1, name: 'Student1' },
+    { id: 2, name: 'Student2' },
+    { id: 3, name: 'Student3' },
+    { id: 4, name: 'Student4' },
+    { id: 5, name: 'Student5' },
+    { id: 6, name: 'Student6' },
+    { id: 7, name: 'Student7' },
+    { id: 8, name: 'Student8' },
+    { id: 9, name: 'Student9' },
+    { id: 10, name: 'Student10' },
+  ];
+
   // Get the current authenticated user and their group
   useEffect(() => {
     const checkUserGroup = async () => {
@@ -82,13 +95,17 @@ export default function App() {
   };
 
   // Fetch student names and IDs
-  const fetchStudents = async () => {
-    try {
-      const result = await API.graphql({ query: listStudents });
-      setStudents(result.data.listStudents.items);
-    } catch (error) {
-      console.error('Error fetching students:', error);
-    }
+  // const fetchStudents = async () => {
+  //   try {
+  //     const result = await API.graphql({ query: listStudents });
+  //     setStudents(result.data.listStudents.items);
+  //   } catch (error) {
+  //     console.error('Error fetching students:', error);
+  //   }
+  // };
+
+  const fetchStudents = () => {
+    setStudents(studentList);
   };
 
   useEffect(() => {
