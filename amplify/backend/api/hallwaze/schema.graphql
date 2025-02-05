@@ -3,15 +3,7 @@
 input AMPLIFY {
   globalAuthRule: AuthRule = { allow: public }
 } # FOR TESTING ONLY!
-type Student
-  @model
-  @auth(
-    rules: [
-      { allow: owner }
-      { allow: groups, groups: ["Admins"] }
-      { allow: public, operations: [read] }
-    ]
-  ) {
+type Student @model {
   id: ID!
   name: String!
   destination: String!
